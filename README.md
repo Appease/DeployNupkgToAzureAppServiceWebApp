@@ -1,57 +1,73 @@
 ####What is it?
 
-A [PoshCI](https://github.com/PoshCI/PoshCI) step that creates one or more [PoshCI](https://github.com/PoshCI/PoshCI) packages
+A [PoshCI](https://github.com/PoshCI/PoshCI) step that deploys a .nupkg to [Azure Websites](http://azure.microsoft.com/en-us/services/websites/).
 
 ####How do I install it?
 
 ```PowerShell
-Add-CIStep -Name "YOUR-CISTEP-NAME" -PackageId "CreatePoshCIPackage"
+Add-CIStep -Name "YOUR-CISTEP-NAME" -PackageId "DeployNupkgToAzureWebsites"
 ```
 
 ####What parameters are available?
 
-#####IncludeNuspecFilePath
-A String[] representing included .nuspec file paths. Either literal or wildcard paths are supported.
-```PowerShell
-[String[]]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$IncludeNuspecFilePath
-```
-
-#####ExcludeFileNameLike
-A String[] representing .nuspec file names to exclude. Either literal or wildcard names are supported.
-```PowerShell
-[String[]]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$ExcludeFileNameLike
-```
-
-#####Recurse
-A Switch representing whether to recursively search directories below $IncludeNuspecFilePath.
-```PowerShell
-[Switch]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$Recurse
-```
-
-#####OutputDirectoryPath
-A String representing the path to the directory resulting .nupkg files should be place in
+#####WebsiteName
+A String representing the name of the website being deployed to
 ```PowerShell
 [String]
+[ValidateNotNullOrEmpty()]
 [Parameter(
     ValueFromPipelineByPropertyName = $true)]
-$OutputDirectoryPath
+$WebsiteName
 ```
-#####Version
-version of the package
+
+#####WebsiteDeploymentPassword
+A String representing the deployment password of the website being deployed to
 ```PowerShell
 [String]
+[ValidateNotNullOrEmpty()]
 [Parameter(
     ValueFromPipelineByPropertyName = $true)]
-$Version='0.0.1'
+$WebsiteDeploymentPassword
+```
+
+#####WebsiteDeploymentPassword
+A String representing the deployment password of the website being deployed to
+```PowerShell
+[String]
+[ValidateNotNullOrEmpty()]
+[Parameter(
+    ValueFromPipelineByPropertyName = $true)]
+$WebsiteDeploymentPassword
+```
+
+#####NupkgId
+A String representing the id of the .nupkg being deployed
+```PowerShell
+[String]
+[ValidateNotNullOrEmpty()]
+[Parameter(
+    ValueFromPipelineByPropertyName = $true)]
+$NupkgId
+```
+
+#####NupkgVersion
+A String representing the version of the .nupkg being deployed
+```PowerShell
+[String]
+[ValidateNotNullOrEmpty()]
+[Parameter(
+    ValueFromPipelineByPropertyName = $true)]
+$NupkgVersion
+```
+
+#####NupkgSrc
+A String representing the path to the src of the .nupkg being deployed
+```PowerShell
+[String]
+[ValidateNotNullOrEmpty()]
+[Parameter(
+    ValueFromPipelineByPropertyName = $true)]
+$NupkgSrc
 ```
 
 ####What's the build status?
