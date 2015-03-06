@@ -30,16 +30,6 @@ A String representing the deployment password of the website being deployed to
 $WebsiteDeploymentPassword
 ```
 
-#####WebsiteDeploymentPassword
-A String representing the deployment password of the website being deployed to
-```PowerShell
-[String]
-[ValidateNotNullOrEmpty()]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$WebsiteDeploymentPassword
-```
-
 #####NupkgId
 A String representing the id of the .nupkg being deployed
 ```PowerShell
