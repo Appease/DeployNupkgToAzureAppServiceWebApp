@@ -1,6 +1,38 @@
 # halt immediately on any errors which occur in this module
 $ErrorActionPreference = 'Stop'
 
+function Test-Uri
+{
+      <#
+            .NOTES
+                  Author: Will Steele
+                  Last Modified Date: 07/27/2012
+                 
+            .EXAMPLE
+                  Test-Uri -Uri 'http://www.msn.com'
+                  True
+           
+            .EXAMPLE
+                  Test-Uri -Uri 'http:/\hax0r.com'
+                  False
+      #>
+     
+      param(
+            [ValidateNotNullOrEmpty()]
+            [String]
+            $Uri 
+      )
+     
+      if([System.Uri]::IsWellFormedUriString($Uri, [System.UriKind]::RelativeOrAbsolute))
+      {
+            [System.Uri]::TryCreate($Uri, [System.UriKind]::RelativeOrAbsolute, [ref] $uri)
+      }
+      else
+      {
+            $false
+      }
+}
+
 function Invoke-CIStep(
 
 [String]
@@ -32,6 +64,11 @@ $NupkgVersion,
 [Parameter(
     ValueFromPipelineByPropertyName = $true)]
 $NupkgSrc){
+
+    if(Test-Path $NupkgSrc){
+        $NupkgSrc = Resolve-Path $NupkgSrc
+        Write-Debug "Resolved `$NupkgSrc to folder: $NupkgSrc"
+    }
 
     $nupkgInstallDirPath = "$PSScriptRoot\Packages"
 
