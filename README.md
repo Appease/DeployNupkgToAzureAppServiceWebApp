@@ -61,5 +61,5 @@ $NupkgSrc
 ```
 
 ####What's the build status?
-![](https://ci.appveyor.com/api/projects/status/tgagt9cl2wr3f1os?svg=true)
+![](https://ci.appveyor.com/api/projects/status/h8jlvaaqeac4isi5?svg=true)
 
