@@ -6,10 +6,10 @@
 		<authors>Chris Dostert</authors>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-			A PoshCI step that deploys a .nupkg to an azure website
+			A PoshDevOps task that deploys a .nupkg to an azure website
 		</description>
-		<tags>Powershell PoshCI AzureWebsites .nupkg</tags>
-		<projectUrl>https://github.com/PoshCI/DeployNupkgToAzureWebsites</projectUrl>
+		<tags>Powershell PoshDevOps AzureWebsites .nupkg</tags>
+		<projectUrl>https://github.com/PoshDevOps/DeployNupkgToAzureWebsites</projectUrl>
 	</metadata>	
 	<files>
 		<file src="**" target="tools\DeployNupkgToAzureWebsites" exclude="**\.nuspec"/>

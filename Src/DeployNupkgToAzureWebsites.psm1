@@ -33,7 +33,7 @@ function Test-Uri
       }
 }
 
-function Invoke-CIStep(
+function Invoke-PoshDevOpsTask(
 
 [String]
 [ValidateNotNullOrEmpty()]
@@ -107,4 +107,4 @@ Invoking nuget:
 
 }
 
-Export-ModuleMember -Function Invoke-CIStep
+Export-ModuleMember -Function Invoke-PoshDevOpsTask

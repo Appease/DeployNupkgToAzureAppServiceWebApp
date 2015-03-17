@@ -1,11 +1,11 @@
 ####What is it?
 
-A [PoshCI](https://github.com/PoshCI/PoshCI) step that deploys a .nupkg to [Azure Websites](http://azure.microsoft.com/en-us/services/websites/).
+A [PoshDevOps](https://github.com/PoshDevOps/PoshDevOps) step that deploys a .nupkg to [Azure Websites](http://azure.microsoft.com/en-us/services/websites/).
 
 ####How do I install it?
 
 ```PowerShell
-Add-CIStep -Name "YOUR-CISTEP-NAME" -PackageId "DeployNupkgToAzureWebsites"
+Add-PoshDevOpsTask -Name "YOUR-CISTEP-NAME" -PackageId "DeployNupkgToAzureWebsites"
 ```
 
 ####What parameters are available?
