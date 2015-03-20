@@ -6,7 +6,7 @@
 		<authors>Chris Dostert</authors>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-			A PoshDevOps task that deploys a .nupkg to an azure website
+			A Poshtask that deploys a .nupkg to an azure website
 		</description>
 		<tags>Powershell PoshDevOps AzureWebsites .nupkg</tags>
 		<projectUrl>https://github.com/PoshDevOps/DeployNupkgToAzureWebsites</projectUrl>

@@ -1,6 +1,6 @@
 ####What is it?
 
-A [PoshDevOps](https://github.com/PoshDevOps/PoshDevOps) step that deploys a .nupkg to [Azure Websites](http://azure.microsoft.com/en-us/services/websites/).
+A [PoshDevOps](https://github.com/PoshDevOps/PoshDevOps) task that deploys a .nupkg to [Azure Websites](http://azure.microsoft.com/en-us/services/websites/).
 
 ####How do I install it?
 
