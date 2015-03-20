@@ -5,7 +5,7 @@ A [PoshDevOps](https://github.com/PoshDevOps/PoshDevOps) task that deploys a .nu
 ####How do I install it?
 
 ```PowerShell
-Add-PoshDevOpsTask -Name "YOUR-CISTEP-NAME" -PackageId "DeployNupkgToAzureWebsites"
+Add-PoshDevOpsTask -Name "YOUR-TASK-NAME" -PackageId "DeployNupkgToAzureWebsites"
 ```
 
 ####What parameters are available?
