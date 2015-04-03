@@ -1,51 +1,19 @@
 # halt immediately on any errors which occur in this module
 $ErrorActionPreference = 'Stop'
 
-function Test-Uri
-{
-      <#
-            .NOTES
-                  Author: Will Steele
-                  Last Modified Date: 07/27/2012
-                 
-            .EXAMPLE
-                  Test-Uri -Uri 'http://www.msn.com'
-                  True
-           
-            .EXAMPLE
-                  Test-Uri -Uri 'http:/\hax0r.com'
-                  False
-      #>
-     
-      param(
-            [ValidateNotNullOrEmpty()]
-            [String]
-            $Uri 
-      )
-     
-      if([System.Uri]::IsWellFormedUriString($Uri, [System.UriKind]::RelativeOrAbsolute))
-      {
-            [System.Uri]::TryCreate($Uri, [System.UriKind]::RelativeOrAbsolute, [ref] $uri)
-      }
-      else
-      {
-            $false
-      }
-}
-
-function Invoke-PoshDevOpsTask(
+function Invoke(
 
 [String]
 [ValidateNotNullOrEmpty()]
 [Parameter(
     ValueFromPipelineByPropertyName = $true)]
-$WebsiteName,
+$WebAppName,
 
 [String]
 [ValidateNotNullOrEmpty()]
 [Parameter(
     ValueFromPipelineByPropertyName = $true)]
-$WebsiteDeploymentPassword,
+$WebAppDeploymentPassword,
 
 [String]
 [ValidateNotNullOrEmpty()]
@@ -72,14 +40,14 @@ $NupkgSrc){
 
     $nupkgInstallDirPath = "$PSScriptRoot\Packages"
 
-    $nugetExecutable = 'nuget'
-    $nugetParameters = @('install',$NupkgId,'-Version',$NupkgVersion,'-Source',$NupkgSrc,'-OutputDirectory',$nupkgInstallDirPath)
+    $NuGetCommand = 'nuget'
+    $NuGetParameters = @('install',$NupkgId,'-Version',$NupkgVersion,'-Source',$NupkgSrc,'-OutputDirectory',$nupkgInstallDirPath)
 Write-Debug `
 @"
 Invoking nuget:
-& $nugetExecutable $($nugetParameters|Out-String)
+& $NuGetCommand $($NuGetParameters|Out-String)
 "@
-    & $nugetExecutable $nugetParameters
+    & $NuGetCommand $NuGetParameters
     # handle errors
     if ($LastExitCode -ne 0) {
         throw $Error
@@ -88,9 +56,9 @@ Invoking nuget:
     [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Deployment")
     
     $destBaseOptions = new-object Microsoft.Web.Deployment.DeploymentBaseOptions
-    $destBaseOptions.UserName = "`$$WebsiteName"
-    $destBaseOptions.Password = $WebsiteDeploymentPassword
-    $destBaseOptions.ComputerName = "https://$WebsiteName.scm.azurewebsites.net/msdeploy.axd?site=$WebsiteName"
+    $destBaseOptions.UserName = "`$$WebAppName"
+    $destBaseOptions.Password = $WebAppDeploymentPassword
+    $destBaseOptions.ComputerName = "https://$WebAppName.scm.azurewebsites.net/msdeploy.axd?site=$WebAppName"
     $destBaseOptions.AuthenticationType = "Basic"
 
     $syncOptions = new-object Microsoft.Web.Deployment.DeploymentSyncOptions
@@ -98,7 +66,7 @@ Invoking nuget:
     $syncOptions.UseChecksum = $true
 
     $deploymentObject = [Microsoft.Web.Deployment.DeploymentManager]::CreateObject([Microsoft.Web.Deployment.DeploymentWellKnownProvider]::ContentPath, "$nupkgInstallDirPath\$NupkgId.$NupkgVersion")
-    $deploymentObject.SyncTo([Microsoft.Web.Deployment.DeploymentWellKnownProvider]::ContentPath, $WebsiteName, $destBaseOptions, $syncOptions)
+    $deploymentObject.SyncTo([Microsoft.Web.Deployment.DeploymentWellKnownProvider]::ContentPath, $WebAppName, $destBaseOptions, $syncOptions)
 
     # handle errors
     if ($LastExitCode -ne 0) {
@@ -107,4 +75,4 @@ Invoking nuget:
 
 }
 
-Export-ModuleMember -Function Invoke-PoshDevOpsTask
+Export-ModuleMember -Function Invoke

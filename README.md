@@ -1,65 +1,31 @@
+![](https://ci.appveyor.com/api/projects/status/1lowje6tsd7l5279?svg=true)
+
 ####What is it?
 
-A [PoshDevOps](https://github.com/PoshDevOps/PoshDevOps) task that deploys a .nupkg to [Azure Websites](http://azure.microsoft.com/en-us/services/websites/).
+An [Appease](http://appease.io) task template that deploys a .nupkg to an [Azure app service web app](http://azure.microsoft.com/en-us/services/app-service/web/).
 
 ####How do I install it?
 
 ```PowerShell
-Add-PoshDevOpsTask -Name "YOUR-TASK-NAME" -PackageId "DeployNupkgToAzureWebsites"
+Add-AppeaseTask `
+    -DevOpName YOUR-DEVOP-NAME `
+    -Name "YOUR-TASK-NAME" `
+    -TemplateId "DeployNupkgToAzureAppServiceWebApp"
 ```
 
-####What parameters are available?
+####What parameters are required?
 
-#####WebsiteName
-A String representing the name of the website being deployed to
-```PowerShell
-[String]
-[ValidateNotNullOrEmpty()]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$WebsiteName
-```
+#####WebAppName
+description: a `string` representing the name of the web app being deployed to
 
-#####WebsiteDeploymentPassword
-A String representing the deployment password of the website being deployed to
-```PowerShell
-[String]
-[ValidateNotNullOrEmpty()]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$WebsiteDeploymentPassword
-```
+#####WebAppDeploymentPassword
+description: a `string` representing the deployment password of the web app being deployed to
 
 #####NupkgId
-A String representing the id of the .nupkg being deployed
-```PowerShell
-[String]
-[ValidateNotNullOrEmpty()]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$NupkgId
-```
+description: a `string` representing the id of the .nupkg being deployed
 
 #####NupkgVersion
-A String representing the version of the .nupkg being deployed
-```PowerShell
-[String]
-[ValidateNotNullOrEmpty()]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$NupkgVersion
-```
+description: a `string` representing the version of the .nupkg being deployed
 
 #####NupkgSrc
-A String representing the path to the src of the .nupkg being deployed
-```PowerShell
-[String]
-[ValidateNotNullOrEmpty()]
-[Parameter(
-    ValueFromPipelineByPropertyName = $true)]
-$NupkgSrc
-```
-
-####What's the build status?
-![](https://ci.appveyor.com/api/projects/status/1lowje6tsd7l5279?svg=true)
-
+description: a `string` representing the path to the src of the .nupkg being deployed
