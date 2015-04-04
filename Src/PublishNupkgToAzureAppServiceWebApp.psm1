@@ -41,7 +41,7 @@ $NupkgSrc){
     $nupkgInstallDirPath = "$PSScriptRoot\Packages"
 
     $NuGetCommand = 'nuget'
-    $NuGetParameters = @('install',$NupkgId,'-Version',$NupkgVersion,'-Source',$NupkgSrc,'-OutputDirectory',$nupkgInstallDirPath)
+    $NuGetParameters = @('install',$NupkgId,'-Version',$NupkgVersion,'-Source',"$NupkgSrc",'-OutputDirectory',$nupkgInstallDirPath)
 Write-Debug `
 @"
 Invoking nuget:
