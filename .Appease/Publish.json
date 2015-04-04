@@ -6,10 +6,10 @@
                       "Name":  "Publish to official Appease feed",
                       "TemplateVersion":  "0.0.12",
                       "Parameters":  {
-                                         "ProjectUrl":  "https://github.com/Appease/DeployNupkgToAzureAppServiceWebApp",
-                                         "Id":  "DeployNupkgToAzureAppServiceWebApp",
+                                         "ProjectUrl":  "https://github.com/Appease/PublishNupkgToAzureAppServiceWebApp",
+                                         "Id":  "PublishNupkgToAzureAppServiceWebApp",
                                          "IconUrl":  "http://res.cloudinary.com/hibczhd9m/image/upload/c_crop,w_350/v1423785217/NuGet.org/5711875.png",
-                                         "Description":  "Deploys a .nupkg to an azure app service web app",
+                                         "Description":  "Publishes a .nupkg to an azure app service web app",
                                          "Dependencies":  {
                                                               "Chocolatey":  [
                                                                                  {
@@ -22,8 +22,8 @@
                                                              "Name":  "Chris Dostert"
                                                          },
                                          "File":  {
-                                                      "Include":  "Src\\DeployNupkgToAzureAppServiceWebApp.psm1",
-                                                      "Destination":  "DeployNupkgToAzureAppServiceWebApp"
+                                                      "Include":  "Src\\PublishNupkgToAzureAppServiceWebApp.psm1",
+                                                      "Destination":  "PublishNupkgToAzureAppServiceWebApp"
                                                   }
                                      }
                   }
