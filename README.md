@@ -2,7 +2,7 @@
 
 ####What is it?
 
-An [Appease](http://appease.io) task template that deploys a .nupkg to an [Azure app service web app](http://azure.microsoft.com/en-us/services/app-service/web/).
+An [Appease](http://appease.io) task template that publishes a .nupkg to an [Azure app service web app](http://azure.microsoft.com/en-us/services/app-service/web/).
 
 ####How do I install it?
 
@@ -10,7 +10,7 @@ An [Appease](http://appease.io) task template that deploys a .nupkg to an [Azure
 Add-AppeaseTask `
     -DevOpName YOUR-DEVOP-NAME `
     -Name "YOUR-TASK-NAME" `
-    -TemplateId "DeployNupkgToAzureAppServiceWebApp"
+    -TemplateId "PublishNupkgToAzureAppServiceWebApp"
 ```
 
 ####What parameters are required?
